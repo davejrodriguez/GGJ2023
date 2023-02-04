@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: f886cea5f47d6424ab06dacfd24841ed
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Opensea Thecrownismine Nfts
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 8337d43082c48c940b241b860414c157, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

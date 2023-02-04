@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 570e637127daf1548bc757a51b7e3a7e, type: 3}
   m_Name: Nutrients
   m_EditorClassIdentifier: 
-  _value: 108
+  _value: 0

@@ -5,29 +5,56 @@ using static UnityEngine.InputSystem.InputAction;
 public class Player : MonoBehaviour
 {
 
+    [SerializeField] private VariableSO<int> waterResource;
+    [SerializeField] private VariableSO<int> rootIndex;
     [SerializeField] private GameObject rootPrefab;
 
-    List<Root> roots= new List<Root>();
+    List<Root> roots = new List<Root>();
 
     Root selectedRoot;
 
     private void Start()
     {
-        selectedRoot = Instantiate(rootPrefab,transform).GetComponent<Root>();
+        Instantiate(rootPrefab, transform).GetComponent<Root>();
+        rootIndex.Value = 0;
     }
 
     public void Move(CallbackContext movement)
     {
-        selectedRoot.Move(movement.ReadValue<Vector2>());
+        if (waterResource.Value > 0)
+        {
+            transform.GetChild(rootIndex.Value).GetComponent<Root>().Move(movement.ReadValue<Vector2>());
+            waterResource.Value--;
+        }
     }
 
     public void SelectLeftRoot(CallbackContext context)
     {
-        //selected root equals the next left root or wrap to the rightmost root
+        if (rootIndex.Value == 0)
+        {
+            rootIndex.Value = transform.childCount - 1;
+        }
+        else
+        {
+            rootIndex.Value--;
+        }
     }
 
     public void SelectRightRoot(CallbackContext context)
     {
-        //selected root equals the next right root or wrap to the leftmost root
+        if (rootIndex.Value == transform.childCount - 1)
+        {
+            rootIndex.Value = 0;
+        }
+        else
+        {
+            rootIndex.Value++;
+        }
+    }
+
+    public void SetRoot(int index)
+    {
+        selectedRoot = transform.GetChild(index).GetComponent<Root>();
+
     }
 }

@@ -1,14 +1,13 @@
 using System;
 using UnityEngine;
 
-[ExecuteAlways]
 public class VariableSO<T> : ScriptableObject
 {
     [SerializeField]private T _value;
     public T Value
     {
         get => _value;
-        private set
+        set
         {
             _value = value;
             OnValueChanged?.Invoke(value);

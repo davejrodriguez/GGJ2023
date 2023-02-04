@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-[ExecuteAlways]
 public class VariableListener<T> : MonoBehaviour
 {
 
