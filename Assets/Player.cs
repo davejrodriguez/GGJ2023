@@ -5,8 +5,9 @@ using static UnityEngine.InputSystem.InputAction;
 public class Player : MonoBehaviour
 {
 
-    [SerializeField] private VariableSO<int> waterResource;
-    [SerializeField] private VariableSO<int> rootIndex;
+    [SerializeField] private IntVariableSO waterResource;
+    [SerializeField] private IntVariableSO nutrientResource;
+    [SerializeField] private IntVariableSO rootIndex;
     [SerializeField] private GameObject rootPrefab;
 
     List<Root> roots = new List<Root>();
@@ -35,7 +36,11 @@ public class Player : MonoBehaviour
 
     public void Split(CallbackContext context)
     {
-        selectedRoot.Split();
+        if (nutrientResource.Value >= 3)
+        {
+            selectedRoot.Split();
+            nutrientResource.Value -= 3;
+        }
     }
 
     public void SelectLeftRoot(CallbackContext context)
@@ -48,6 +53,7 @@ public class Player : MonoBehaviour
         {
             rootIndex.Value--;
         }
+        SetRoot(rootIndex.Value);
     }
 
     public void SelectRightRoot(CallbackContext context)
@@ -60,6 +66,7 @@ public class Player : MonoBehaviour
         {
             rootIndex.Value++;
         }
+        SetRoot(rootIndex.Value);
     }
 
     public void SetRoot(int index)
