@@ -1,25 +1,26 @@
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class VariableListener<T> : MonoBehaviour
+public abstract class VariableListener<T> : MonoBehaviour
 {
 
-    [SerializeField] private VariableSO<T> variable;
+    public abstract VariableSO<T> Variable { get; }
     [SerializeField] private UnityEvent<T> OnVariableChanged;
 
     private void OnEnable()
     {
-        if (variable != null)
+        if (Variable != null)
         {
-            variable.OnValueChanged += OnValueChanged;
+            Variable.OnValueChanged += OnValueChanged;
         }
     }
 
     private void OnDisable()
     {
-        if (variable != null)
+        if (Variable != null)
         {
-            variable.OnValueChanged -= OnValueChanged;
+            Variable.OnValueChanged -= OnValueChanged;
         }
     }
 
@@ -30,10 +31,10 @@ public class VariableListener<T> : MonoBehaviour
 
     private void OnValidate()
     {
-        if (variable != null)
+        if (Variable != null)
         {
-            variable.OnValueChanged -= OnValueChanged;
-            variable.OnValueChanged += OnValueChanged;
+            Variable.OnValueChanged -= OnValueChanged;
+            Variable.OnValueChanged += OnValueChanged;
         }
     }
 }

@@ -15,7 +15,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "RootLeft",
+                    "name": "CycleLeft",
                     "type": "Button",
                     "id": "a4b0a4f1-79f0-405e-b44c-2edaa49b5849",
                     "expectedControlType": "Button",
@@ -24,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "RootRight",
+                    "name": "CycleRight",
                     "type": "Button",
                     "id": "882bbe33-3ffc-4ba9-9475-e2393fb05bd1",
                     "expectedControlType": "Button",
@@ -36,6 +36,15 @@
                     "name": "Start",
                     "type": "Button",
                     "id": "ac1425cb-bc1f-410f-b2bc-11093f92a402",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Split",
+                    "type": "Button",
+                    "id": "343a9a8a-8f37-4585-8ed6-ff109cc5ef13",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -105,7 +114,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RootLeft",
+                    "action": "CycleLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -116,7 +125,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "RootRight",
+                    "action": "CycleRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -128,6 +137,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "53f4b089-76ff-43e9-a6e2-e1c4a84afb1b",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Split",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

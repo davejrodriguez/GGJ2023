@@ -6,7 +6,7 @@ public class Tree : MonoBehaviour
 
     private void Start()
     {
-        branch.BranchIt(5);
+        //branch.BranchIt(5);
     }
 
 }

@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
 
     Root selectedRoot;
 
-    private void Start()
+    public void Begin()
     {
         Instantiate(rootPrefab, transform).GetComponent<Root>();
         rootIndex.Value = 0;
@@ -23,9 +23,19 @@ public class Player : MonoBehaviour
     {
         if (waterResource.Value > 0)
         {
-            transform.GetChild(rootIndex.Value).GetComponent<Root>().Move(movement.ReadValue<Vector2>());
+            var movementVector = movement.ReadValue<Vector2>();
+            selectedRoot.Move(movementVector);
             waterResource.Value--;
+            if (movementVector.y < 0)
+            {
+                waterResource.Value--; //Costs extra water to move down
+            }
         }
+    }
+
+    public void Split(CallbackContext context)
+    {
+        selectedRoot.Split();
     }
 
     public void SelectLeftRoot(CallbackContext context)
@@ -54,7 +64,19 @@ public class Player : MonoBehaviour
 
     public void SetRoot(int index)
     {
+        if (selectedRoot != null)
+        {
+            selectedRoot.Deselect();
+        }
         selectedRoot = transform.GetChild(index).GetComponent<Root>();
+        selectedRoot.Select();
+    }
 
+    public void ShouldGoLive(int state)
+    {
+        if (state == 0)
+        {
+            selectedRoot.GoLive();
+        }
     }
 }

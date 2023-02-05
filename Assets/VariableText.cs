@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[ExecuteAlways]
 [RequireComponent(typeof(TMPro.TextMeshProUGUI))]
 public class VariableText<T> : MonoBehaviour
 {

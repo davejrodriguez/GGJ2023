@@ -1,24 +1,14 @@
 using System;
 using UnityEngine;
 
-public class VariableSO<T> : ScriptableObject
+public abstract class VariableSO<T> : ScriptableObject
 {
-    [SerializeField]private T _value;
-    public T Value
+    public abstract T Value
     {
-        get => _value;
-        set
-        {
-            _value = value;
-            OnValueChanged?.Invoke(value);
-        }
+        get;
+        set;
     }
 
-    public Action<T> OnValueChanged { get; set; }
-
-    private void OnValidate()
-    {
-        Value= _value;
-    }
+    public abstract Action<T> OnValueChanged { get; set; }
 
 }
