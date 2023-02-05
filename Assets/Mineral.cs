@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class Mineral : MonoBehaviour
 {
+    [SerializeField] private FloatVariableSO resource;
+    [SerializeField] private float quantity;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.CompareTag("root"))
-        {
-            collision.gameObject.GetComponent<Root>().Split();
-            Destroy(gameObject);
-        }
+        resource.Value += quantity;
+        Destroy(gameObject);
     }
 }
